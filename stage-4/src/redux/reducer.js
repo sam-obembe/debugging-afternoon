@@ -1,4 +1,5 @@
-import * as productsController from './productsController';
+import productsController from './productsController';
+import {applyMiddleware} from 'react-redux'
 
 // Constants
 const ADD_TO_SHOPPING_CART = "ADD_TO_SHOPPING_CART";
@@ -13,7 +14,7 @@ let initialState = {
 }
 
 // Reducer
-export default function reducer(state, action) {
+export default function reducer(state = initialState, action) {
     switch(action.type) {
         case GET_ALL_PRODUCTS_PENDING:
             return Object.assign({}, state, {loading: true});
@@ -52,6 +53,6 @@ export function removeFromShoppingCart(productIndex) {
 export function getAllProducts(products) {
     return {
         type: GET_ALL_PRODUCTS,
-        payload: productsController.getAllProducts()
+        payload: productsController()
     }
 }
