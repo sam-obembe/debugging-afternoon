@@ -26,9 +26,9 @@ export default function reducer(state=initialState, action) {
 
         case REMOVE_FROM_SHOPPING_CART:
             let newArray = state.shoppingCart.slice();
-            let ans = newArray.splice(action.payload, 1);
+             newArray.splice(action.payload, 1);
             if(state.shoppingCart.length>0){
-                return Object.assign({}, state, {shoppingCart: ans});
+                return Object.assign({}, state, {shoppingCart: newArray});
             }else{
                 return Object.assign({},state,{shoppingCart: []})
             }
